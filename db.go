@@ -201,6 +201,7 @@ func (c *C) SelectEach(fn func(int, []byte) (include bool, data []byte, stop boo
 	}
 	c.close()
 	os.Remove(c.path)
+	tempfile.Close()
 	err = os.Rename(tempfilename, c.path)
 	if err != nil {
 		return err
